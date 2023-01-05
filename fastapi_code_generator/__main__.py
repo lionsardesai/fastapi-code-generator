@@ -98,9 +98,9 @@ def generate_code(
     if not template_dir:
         template_dir = BUILTIN_TEMPLATE_DIR
     if enum_field_as_literal:
-        parser = OpenAPIParser(input_text, enum_field_as_literal=enum_field_as_literal)
+        parser = OpenAPIParser(input_text, enum_field_as_literal=enum_field_as_literal,use_schema_description=True,use_subclass_enum=True)
     else:
-        parser = OpenAPIParser(input_text)
+        parser = OpenAPIParser(input_text,use_schema_description=True, use_subclass_enum=True)
     with chdir(output_dir):
         models = parser.parse()
     if not models:
